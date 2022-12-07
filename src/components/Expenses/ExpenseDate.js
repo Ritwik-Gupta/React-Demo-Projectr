@@ -1,6 +1,6 @@
 import "./ExpenseDate.css"
 
-function ExpenseDate(props){
+const ExpenseDate = (props) => {
     const date = props.date.getDate();
     const month = props.date.getMonth();
     const year = props.date.getUTCFullYear()
