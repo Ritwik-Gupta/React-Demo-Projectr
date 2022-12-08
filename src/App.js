@@ -1,5 +1,6 @@
 import AllExpenses from "./components/Expenses/AllExpenses";
 import NewExpenses from "./components/NewExpenses/NewExpenses";
+import ExpensesFilter from "./components/Expenses/ExpensesFilter";
 
 const App = () => {
 
@@ -25,9 +26,19 @@ const App = () => {
     },
   ];
 
+  const addExpenseHandler = (expenseObject) => {
+      const newExpense = {
+        ...expenseObject,
+        id: Math.floor((Math.random() * 100) + 1)
+      }
+      expenses.push(newExpense);
+      console.log(expenses)
+      console.log("Expense added!")
+  }
+
   return (
     <div>
-      <NewExpenses />
+      <NewExpenses addExpense={addExpenseHandler} />
       <AllExpenses data={expenses}/>
     </div>
   );
