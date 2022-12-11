@@ -13,7 +13,8 @@ const AllExpenses = (props) => {
         <div>
             <Card className="expenses">
                 <ExpensesFilter getExpenseFromSibling={getExpenseFromSiblingHandler} />
-                <ExpenseItem
+                {props.data.map(expense => <ExpenseItem title = {expense.title} amount = {expense.amount} date = {expense.date} />)}
+                {/* <ExpenseItem
                     title = {props.data[0].title}
                     amount = {props.data[0].amount}
                     date = {props.data[0].date}
@@ -32,7 +33,7 @@ const AllExpenses = (props) => {
                     title = {props.data[3].title}
                     amount = {props.data[3].amount}
                     date = {props.data[3].date}
-                />
+                /> */}
             </Card>
         </div>
         
