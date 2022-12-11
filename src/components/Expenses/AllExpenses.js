@@ -2,42 +2,29 @@ import ExpenseItem from "./ExpenseItem";
 import "./AllExpenses.css"
 import Card from "../UI/Card"
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesContent from "./ExpensesContent";
+import { useState } from "react";
 
 const AllExpenses = (props) => {
-   
-    const getExpenseFromSiblingHandler = (data) => {
-        console.log(data);
-        console.log("From sibling")
+    const [filteredYear, setFilteredYear] = useState("2020")
+
+    const filterChangeHandler = (selectedYear) => {
+        setFilteredYear(selectedYear)
     }
-    return(
+
+    const filteredExpenses = props.data.filter(expense => {
+        return expense.date.getUTCFullYear().toString() === filteredYear
+    })
+
+    return (
         <div>
             <Card className="expenses">
-                <ExpensesFilter getExpenseFromSibling={getExpenseFromSiblingHandler} />
-                {props.data.map(expense => <ExpenseItem title = {expense.title} amount = {expense.amount} date = {expense.date} />)}
-                {/* <ExpenseItem
-                    title = {props.data[0].title}
-                    amount = {props.data[0].amount}
-                    date = {props.data[0].date}
-                />
-                <ExpenseItem
-                    title = {props.data[1].title}
-                    amount = {props.data[1].amount}
-                    date = {props.data[1].date}
-                />
-                <ExpenseItem
-                    title = {props.data[2].title}
-                    amount = {props.data[2].amount}
-                    date = {props.data[2].date}
-                />
-                <ExpenseItem
-                    title = {props.data[3].title}
-                    amount = {props.data[3].amount}
-                    date = {props.data[3].date}
-                /> */}
+                <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler}/>
+                <ExpensesContent content={filteredExpenses}/>
             </Card>
         </div>
-        
-           
+
+
     );
 }
 

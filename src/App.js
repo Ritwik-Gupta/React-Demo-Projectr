@@ -1,10 +1,10 @@
 import AllExpenses from "./components/Expenses/AllExpenses";
 import NewExpenses from "./components/NewExpenses/NewExpenses";
-import ExpensesFilter from "./components/Expenses/ExpensesFilter";
+import { useState } from "react";
 
 const App = () => {
 
-  const expenses = [
+  const DUMMY_EXPENSES = [
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -26,15 +26,26 @@ const App = () => {
     },
   ];
 
+  const [expenses, updateExpenses] = useState(DUMMY_EXPENSES);
+
   const addExpenseHandler = (expenseObject) => {
       const newExpense = {
         ...expenseObject,
         id: Math.floor((Math.random() * 100) + 1)
       }
-      expenses.push(newExpense);
-      console.log(expenses)
+      // expenses.push(newExpense);
+      // console.log(expenses)
       console.log("Expense added!")
+
+      updateExpenses((prevState) => {
+          return([
+            ...prevState,
+            newExpense
+          ])
+      });
   }
+
+
 
   return (
     <div>

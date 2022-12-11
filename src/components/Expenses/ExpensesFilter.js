@@ -3,11 +3,9 @@ import React from 'react';
 import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
-    const dateChangeHandler = (event) => {
-        var dateSelected = event.target.value;
-        props.getExpenseFromSibling(dateSelected);
-        
-    }
+  const dateChangeHandler = (event) => {
+    props.onChangeFilter(event.target.value);
+  }
 
   return (
     <div className='expenses-filter'>
