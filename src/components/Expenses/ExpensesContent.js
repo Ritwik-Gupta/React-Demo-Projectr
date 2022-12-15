@@ -1,10 +1,11 @@
 import ExpenseItem from "./ExpenseItem";
+import "./ExpensesContent.css"
 
 const ExpensesContent = (props) => {
 
     const filteredExpenses = props.content;
 
-    let expensesContent = <h2>No Expenses</h2>
+    let expensesContent = <div className="expenses-list__fallback"><h2>No Expenses</h2></div>
 
     if(filteredExpenses.length > 0) {
         expensesContent = filteredExpenses.map(expense => 
@@ -16,6 +17,8 @@ const ExpensesContent = (props) => {
                                 />
                             )
     }
+
+    return expensesContent;
 }
 
 export default ExpensesContent;

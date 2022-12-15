@@ -1,8 +1,8 @@
-import ExpenseItem from "./ExpenseItem";
 import "./AllExpenses.css"
 import Card from "../UI/Card"
 import ExpensesFilter from "./ExpensesFilter";
 import ExpensesContent from "./ExpensesContent";
+import "./ExpensesContent.css"
 import { useState } from "react";
 
 const AllExpenses = (props) => {
@@ -23,8 +23,6 @@ const AllExpenses = (props) => {
                 <ExpensesContent content={filteredExpenses}/>
             </Card>
         </div>
-
-
     );
 }
 
