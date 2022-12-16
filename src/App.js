@@ -1,5 +1,6 @@
 import AllExpenses from "./components/Expenses/AllExpenses";
 import NewExpenses from "./components/NewExpenses/NewExpenses";
+import Chart from "./components/Charts/Chart";
 import { useState } from "react";
 
 const App = () => {
